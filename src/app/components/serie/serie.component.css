@@ -1,0 +1,64 @@
+.badge {
+    font-variant: small-caps;
+    font-size: medium;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+main {
+    min-height: 100%;
+}
+
+.card-header {
+    text-align: left;
+}
+
+.btn {
+    text-decoration: none;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.btn:hover {
+    box-shadow: 0 -2px 12px 0 rgb(255 255 255 / 20%), 0 4px 10px 0 rgb(255 255 255 / 19%);
+}
+
+.custom {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+@media (min-width:356px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width:576px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width:768px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width:992px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+@media (min-width:1200px) {
+    .card-columns {
+        column-count: 6;
+    }
+}

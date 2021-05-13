@@ -1,3 +1,23 @@
-<div class="card-columns">
-    <app-card-serie></app-card-serie>
-</div>
+<app-header></app-header>
+<main class="bg-black">
+    <picture>
+        <source media="(max-width: 640px)" srcset="../../../assets/img/cinema-640.jpg">
+        <source media="(max-width: 1280px)" srcset="../../../assets/img/cinema-1280.jpg">
+        <source media="(max-width: 1920px)" srcset="../../../assets/img/cinema-1920.jpg">
+        <source media="(min-width: 1921px)" srcset="../../../assets/img/cinema-2400.jpg">
+        <img src="../../../assets/img/cinema-1920.jpg" alt="" class="img-fluid border-0">
+    </picture>
+    <div class="card-columns p-5 ">
+        <div class="custom rounded" *ngFor="let serie of listaSeries">
+            <a class="card hover-shadow text-white text-decoration-none bg-dark mb-3" routerLink="/serie/{{serie ?.idSerie}}">
+                <div class="img">
+                    <img class="card-img img-fluid" [src]="serie ?.poster" alt="Card image cap">
+                </div>
+                <div class="card-body bg-dark">
+                    <div class="card-title">{{serie ?.titulo}} ({{serie ?.year}})</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,77 @@
+<app-header></app-header>
+<main class="bg-black">
+    <div class="container p-3">
+        <div class="mb-3 d-md-flex">
+            <div class="me-3 mb-sm-3 mb-md-0 text-center">
+                <picture>
+                    <img [src]="respuesta ?.poster" alt="Poster {{respuesta?.titulo}}"
+                        class="img-fluid img-thumbnail rounded">
+                </picture>
+            </div>
+            <div class="d-flex flex-column">
+                <div class="mb-3 ">
+                    <h1 class="text-warning mb-0">{{respuesta ?.titulo | titlecase}} ({{respuesta ?.year}})</h1>
+                </div>
+                <div class="mb-2 justify-content-evenly d-flex ">
+                    <div class="badge bg-secondary me-2" *ngFor="let item of respuesta ?.generos">{{item ?.nombre}}
+                    </div>
+                </div>
+                <p class="text-justify">{{respuesta ?.sinopsis}}</p>
+                <button class="btn btn-danger mt-auto">Trailer</button>
+            </div>
+        </div>
+        <div id="accordion">
+            <div class="card bg-dark text-left">
+                <button class="btn btn-link collapsed p-0 border-0" data-toggle="collapse" data-target="#collapseOne"
+                    aria-expanded="false" aria-controls="collapseOne">
+                    <div class="card-header bg-black p-3 ps-4 " id="headingTwo">
+                        <h5 class="mb-0"> Directors </h5>
+                    </div>
+                </button>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <ul>
+                            <li *ngFor="let item of listDirector">{{item.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark text-left">
+                <button class="btn btn-link collapsed p-0 border-0" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="card-header bg-black p-3 ps-4 " id="headingTwo">
+                        <h5 class="mb-0"> Writers </h5>
+                    </div>
+                </button>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <ul>
+                            <li *ngFor="let item of listWriter">{{item.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-dark text-left">
+                <button class="btn btn-link collapsed p-0 border-0" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="false" aria-controls="collapseThree">
+                    <div class="card-header bg-black p-3 ps-4 " id="headingTwo">
+                        <h5 class="mb-0"> Actors </h5>
+                    </div>
+                </button>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body card-columns">
+                        <div class="custom mb-3 border-1 rounded border-dark" *ngFor="let item of listActor">
+                            <div class="img">
+                                <img class="card-img img-fluid" [src]="item ?.foto" alt="Card image cap">
+                            </div>
+                            <div class="card-body bg-black">
+                                <div class="card-title">{{item ?.name}})</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>
