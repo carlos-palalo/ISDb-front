@@ -1,0 +1,51 @@
+@media (min-width:356px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width:576px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width:768px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width:992px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+@media (min-width:1200px) {
+    .card-columns {
+        column-count: 6;
+    }
+}
+
+.custom{
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.img{
+    overflow: hidden;
+    position: relative;
+}
+
+img{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 1s;
+}
+
+img:hover {
+    transform: scale(1.2);
+}

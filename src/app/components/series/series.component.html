@@ -1,0 +1,12 @@
+<div class="card-columns p-5 ">
+    <div class="custom " *ngFor="let serie of listaSeries">
+        <a class="card hover-shadow text-white text-decoration-none bg-dark mb-3" role="button" (click)="getSerie(serie ?.idSerie)">
+            <div class="img">
+                <img class="card-img img-fluid" [src]="serie ?.poster" alt="Card image cap">
+            </div>
+            <div class="card-body bg-dark">
+                <div class="card-title">{{serie ?.titulo}} ({{serie ?.year}})</div>
+            </div>
+        </a>
+    </div>
+</div>

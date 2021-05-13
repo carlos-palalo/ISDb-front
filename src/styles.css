@@ -1,3 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"
+
+@import "~bootstrap/dist/css/bootstrap.css";
 /* npm install bootstrap jquery */
+
+.bg-black {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(4, 4, 4, 1) 0%, rgba(6, 6, 6, 1) 50%, rgba(8, 8, 8, 1) 100%);
+    color: white;
+}
+
+.bg-black-1 {
+    background: rgb(6, 6, 6);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(2, 2, 2, 1) 100%);
+
+    color: white;
+}
+
+.bg-black-2 {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+img{
+    width: 100%;
+}
+
+footer section>a{
+    width: 30px;
+}
