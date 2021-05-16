@@ -1,3 +1,7 @@
+.container-img{
+    max-width: 350px;
+}
+
 .badge {
     font-variant: small-caps;
     font-size: medium;

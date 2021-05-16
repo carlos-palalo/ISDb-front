@@ -1,0 +1,8 @@
+iframe {
+    height: 20em;
+    width: 100%;
+    background-image: url("../../../assets/img/error-404-not-found.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

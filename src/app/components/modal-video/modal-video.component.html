@@ -1,0 +1,8 @@
+<ng-template #contenido let-modal>
+    <div class="embed-responsive embed-responsive-16by9" style="text-align: center;">
+        <iframe [src]="sanitizeVideoUrl()" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
+            frameborder="no" scrolling="no" class="embed-responsive-item"></iframe>
+    </div>
+</ng-template>
+<button class="btn mt-auto btn-outline-danger" type="button" (click)="open(contenido)">Watch
+    Trailer</button>

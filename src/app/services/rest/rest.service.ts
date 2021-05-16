@@ -19,6 +19,10 @@ export class RestService {
   }
 
   public getSerie(id: any) {
-    return this.http.get(this.urlGeneral + "getserie/"+id);  // GET 
+    return this.http.get(this.urlGeneral + "getserie/" + id);  // GET 
+  }
+
+  public searchSeries() {
+    return this.http.get(this.urlGeneral + "searchserie");  // GET
   }
 }

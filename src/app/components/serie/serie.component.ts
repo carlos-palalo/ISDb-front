@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestService } from '../../services/rest/rest.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-serie',
@@ -14,6 +15,9 @@ export class SerieComponent implements OnInit {
   public listActor: Array<any> = [];
 
   constructor(private route: ActivatedRoute, private RestService: RestService) { }
+
+  @ViewChild(HeaderComponent)
+  private resetHeader: HeaderComponent;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: any) => {
@@ -32,6 +36,7 @@ export class SerieComponent implements OnInit {
       });
   }
 
+
   public cargarListas() {
     this.respuesta.listaReparto.forEach(element => {
       switch (element.role) {
@@ -46,5 +51,7 @@ export class SerieComponent implements OnInit {
           break;
       }
     });
+    this.resetHeader.filter_value="";
+    this.resetHeader.resetSearch();
   }
 }
