@@ -177,7 +177,6 @@ export class TableUsuarioComponent implements OnInit {
       var myFormData = new FormData();
 
       // Begin assigning parameters
-
       myFormData.append('username', this.editForm.value.username);
       myFormData.append('email', this.editForm.value.email);
       myFormData.append('tipo', this.editForm.value.tipo);

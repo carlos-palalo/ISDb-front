@@ -30,15 +30,15 @@ export class CrudUsuarioService {
   }
 
   //update user
-  public updateuser(form: FormData, userid): Observable<any> {
+  public updateuser(form: FormData, id: Number): Observable<any> {
     var json = {
-      IdUsuario: userid,
+      IdUsuario: id,
       Username: form.get('username'),
       Email: form.get('email'),
       Tipo: form.get('tipo')
     };
     console.log(json);
-    return this.http.put(`${this.baseUrl}/putusuario/${userid}`, json);
+    return this.http.put(`${this.baseUrl}/putusuario`, json);
   }
 
   //delete user
