@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
@@ -14,34 +15,34 @@ export class CrudUsuarioService {
   constructor(private http: HttpClient) { }
 
   //get all users  details
-  public getusers() {
+  public getusers(): Observable<any> {
     return this.http.get(this.baseUrl + '/getusuarios');
   }
 
   //get single user
-  public getsingleuser(userid) {
-    return this.http.get(this.baseUrl + '/getusuario/' + userid)
-      .subscribe((res: Response) => {
-        this.singleuserdata = res[0];
-      });
+  public getsingleuser(userid): Observable<any> {
+    return this.http.get(`${this.baseUrl}/getusuario/${userid}`);
   }
 
   //add new user    
-  public adduser(username, pass, email) {
-    //return this.http.post<any>(`${environment.apiUrl}/Login/register`, { Username, Password, Email });
-    //return this.http.post<any>(this.baseUrl + '/postusuario', {username, pass, email}).subscribe((res: Response) => { });
-    return this.http.post<any>(this.baseUrl + '/postusuario', { username, pass, email })
-      .pipe(map(usuario => { return usuario; }));
+  public adduser(username: string, password: string, email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/postusuario`, { username, password, email });
   }
 
   //update user
-  public updateuser(userid) {
-  return this.http.put(this.baseUrl + '/putusuario'
-    , userid).subscribe((res: Response) => { });
-}
+  public updateuser(form: FormData, userid): Observable<any> {
+    var json = {
+      IdUsuario: userid,
+      Username: form.get('username'),
+      Email: form.get('email'),
+      Tipo: form.get('tipo')
+    };
+    console.log(json);
+    return this.http.put(`${this.baseUrl}/putusuario/${userid}`, json);
+  }
 
   //delete user
-  public deleteuser(userid) {
-  return this.http.delete(this.baseUrl + '/deleteusuario' + userid).subscribe((res: Response) => { });
-}
+  public deleteuser(userid): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/deleteusuario/${userid}`);
+  }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://api-isdb.azurewebsites.net/'
+  apiUrl: 'https://api-isdb.azurewebsites.net'
 };
 
 /*

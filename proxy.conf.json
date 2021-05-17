@@ -1,0 +1,7 @@
+{
+    "/*": {
+        "target": "https://api-isdb.azurewebsites.net",
+        "secure": false,
+        "loglevel": "debug"
+    }
+}
