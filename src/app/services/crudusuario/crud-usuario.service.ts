@@ -25,8 +25,13 @@ export class CrudUsuarioService {
   }
 
   //add new user    
-  public adduser(username: string, password: string, email: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/postusuario`, { username, password, email });
+  public adduser(form: FormData): Observable<any> {
+    var json = {
+      username: form.get('username'),
+      password: form.get('password'),
+      email: form.get('email')
+    };
+    return this.http.post(`${this.baseUrl}/postusuario`, json);
   }
 
   //update user

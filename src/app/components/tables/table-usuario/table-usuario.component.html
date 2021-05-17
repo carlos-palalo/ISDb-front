@@ -2,15 +2,15 @@
     <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewuser()">Add New User</button>
     <!--Datatable with User Details-->
     <div class="table-responsive">
-        <table class="table table-striped table-sm" id="datatableexample">
-            <thead>
+        <table class="table table-striped table-sm text-center" id="datatableexample">
+            <thead class="bg-dark text-white">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
                     <th scope="col">Password</th>
                     <th scope="col">Email</th>
                     <th scope="col">Tipo</th>
-                    <th></th>
+                    <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,8 +20,8 @@
                     <td>**************</td>
                     <td>{{group.email}}</td>
                     <td>{{group.tipo}}</td>
-                    <td>
-                        <button class="btn btn-warning me-2" (click)="edituser(group.idUsuario)"> <i
+                    <td class="justify-content-around d-flex">
+                        <button class="btn btn-warning" (click)="edituser(group.idUsuario)"> <i
                                 class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
                         <button class="btn btn-danger" (click)="deleteuser(group.idUsuario)"> <i class="fa fa-trash"
@@ -33,10 +33,11 @@
         </table>
     </div>
 </div>
+
 <!--Add User Modal-->
 <div class="modal" id="addUser">
-    <div class="modal-dialog">
-        <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
             <div class="modal-header">
                 <h4 class="modal-title align-center">Add User Details</h4>
                 <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
@@ -83,7 +84,7 @@
 
 <!--Edit User-->
 <div class="modal" id="editModal" *ngIf="showedituser">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title align-center">Edit : {{userdata.username}}</h4>
