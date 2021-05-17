@@ -23,6 +23,14 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { ManagementComponent } from './components/management/management.component';
 import { ManagementAdminComponent } from './components/management-admin/management-admin.component';
+import { NavManagementComponent } from './components/nav-management/nav-management.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableUsuarioComponent } from './components/tables/table-usuario/table-usuario.component';
+import { TableReviewComponent } from './components/tables/table-review/table-review.component';
+import { TableSerieComponent } from './components/tables/table-serie/table-serie.component';
+import { TableRepartoComponent } from './components/tables/table-reparto/table-reparto.component';
+import { TableRoleComponent } from './components/tables/table-role/table-role.component';
+import { TableGeneroComponent } from './components/tables/table-genero/table-genero.component';
 
 @NgModule({
   declarations: [
@@ -43,14 +51,22 @@ import { ManagementAdminComponent } from './components/management-admin/manageme
     LoginComponent,
     RegisterComponent,
     ManagementComponent,
-    ManagementAdminComponent
+    ManagementAdminComponent,
+    NavManagementComponent,
+    TableUsuarioComponent,
+    TableReviewComponent,
+    TableSerieComponent,
+    TableRepartoComponent,
+    TableRoleComponent,
+    TableGeneroComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

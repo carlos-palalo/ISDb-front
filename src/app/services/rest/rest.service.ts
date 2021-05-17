@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
-  private urlBase: string = "https://api-isdb.azurewebsites.net/";
+  private urlBase: string = `${environment.apiUrl}`;
   private urlAdmin: string = this.urlBase + "Admin/";
   private urlGeneral: string = this.urlBase + "General/";
   private urlLogin: string = this.urlBase + "Login/";

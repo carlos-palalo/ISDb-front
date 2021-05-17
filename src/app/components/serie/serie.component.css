@@ -29,7 +29,7 @@ main {
 }
 
 .btn:hover {
-    box-shadow: 0 -2px 12px 0 rgb(255 255 255 / 20%), 0 4px 10px 0 rgb(255 255 255 / 19%);
+    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%) !important;
 }
 
 .custom {

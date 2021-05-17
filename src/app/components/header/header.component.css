@@ -11,6 +11,9 @@
 .custom-search a:hover {
     background-color: black !important;
 }
+nav .btn{
+    font-weight: bold;
+}
 
 /****************************************************/
 /* Css from https://codepen.io/devstreak/pen/dMYgeO */
