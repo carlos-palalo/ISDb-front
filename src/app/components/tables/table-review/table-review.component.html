@@ -38,30 +38,6 @@
     </div>
 </div>
 
-<form novalidate>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="yesno">Not searchable</label>
-            <ng-select appearance="outline" #agreeSelect labelForId="yesno" [searchable]="false" >
-                <ng-option [value]="true">Yes</ng-option>
-                <ng-option [value]="false">No</ng-option>
-            </ng-select>
-            <br/>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="heroId">Basic select</label>
-            <ng-select appearance="outline" [searchable]="false" [clearable]="false" labelForId="heroId" >
-                <ng-option value="batman">8
-                </ng-option>
-                <ng-option value="spidey">8
-                </ng-option>
-                <ng-option value="thor">8
-                </ng-option>
-            </ng-select>
-        </div>
-    </div>
-</form>
-
 <!--Add Review Modal-->
 <div class="modal" id="addReview">
     <div class="modal-dialog modal-dialog-centered">
@@ -95,72 +71,108 @@
                     <div class="row">
                         <div class="form-group col-sm-4">
                             <label for="puntuacion">Puntuacion</label>
-                            <select class="form-control selectpicker show-menu-arrow" formControlName="puntuacion"
-                                [ngClass]="{ 'is-invalid': submitted && f.puntuacion.errors }">
-                                <option></option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+                            <app-custom-dropdown formControlName="puntuacion" [options]="optPuntuaciones"
+                                [ngClass]="{ 'is-invalid': submitted && f.puntuacion.errors }"></app-custom-dropdown>
                             <div *ngIf="submitted && f.puntuacion.errors" class="invalid-feedback">
-                                <div *ngIf="f.puntuacion.errors.required">Puntuacion is required</div>
+                                <div *ngIf="f.puntuacion.errors.required || f.puntuacion.errors.pattern">Puntuacion is
+                                    required</div>
                             </div>
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="idUsuario">ID Usuario</label>
-                            <select class="form-control selectpiker" formControlName="idUsuario"
-                                [ngClass]="{ 'is-invalid': submitted && f.idUsuario.errors }" data-size="5">
-                                <option></option>
-                                <option *ngFor="let user of usuarios" [value]="user.idUsuario">{{user.idUsuario}}
-                                </option>
-                            </select>
+                            <app-custom-dropdown formControlName="idUsuario" [options]="optUsuarios"
+                                [ngClass]="{ 'is-invalid': submitted && f.idUsuario.errors }"></app-custom-dropdown>
                             <div *ngIf="submitted && f.idUsuario.errors" class="invalid-feedback">
-                                <div *ngIf="f.idUsuario.errors.required">ID Usuario is required</div>
+                                <div *ngIf="f.idUsuario.errors.required || f.idUsuario.errors.pattern">ID Usuario is
+                                    required</div>
                             </div>
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="idSerie">ID Serie</label>
-                            <select class="form-control" formControlName="idSerie"
-                                [ngClass]="{ 'is-invalid': submitted && f.idSerie.errors }" size="2">
-                                <option></option>
-                                <option *ngFor="let serie of series">{{serie.idSerie}}</option>
-                            </select>
+                            <app-custom-dropdown formControlName="idSerie" [options]="optSeries"
+                                [ngClass]="{ 'is-invalid': submitted && f.idSerie.errors }"></app-custom-dropdown>
                             <div *ngIf="submitted && f.idSerie.errors" class="invalid-feedback">
-                                <div *ngIf="f.idSerie.errors.required">ID Serie is required</div>
+                                <div *ngIf="f.idSerie.errors.required || f.idSerie.errors.pattern">ID Serie is required
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Role</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Review</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<!--Edit Role-->
+<!--Edit Review-->
 <div class="modal" id="editModal" *ngIf="showeditreview">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title align-center">Edit : {{reviewdata.review}}</h4>
+                <h4 class="modal-title align-center">Edit : {{reviewdata.titulo}}</h4>
                 <button type="button" class="btn btn-danger close" (click)="editClose()">Close</button>
             </div>
             <div class="modal-body">
                 <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit()">
                     <div class="row">
                         <div class="form-group col-sm-6">
-                            <label>Nombre</label>
-                            <input type="text" formControlName="nombre" class="form-control"
-                                [ngClass]="{ 'is-invalid': submitted && fe.nombre.errors }" />
-                            <div *ngIf="submitted && fe.nombre.errors" class="invalid-feedback">
-                                <div *ngIf="fe.nombre.errors.required">Nombre is required</div>
+                            <label>titulo</label>
+                            <input type="text" formControlName="titulo" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fe.titulo.errors }" />
+                            <div *ngIf="submitted && fe.titulo.errors" class="invalid-feedback">
+                                <div *ngIf="fe.titulo.errors.required">Titulo is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label>Descripcion</label>
+                            <input type="text" formControlName="descripcion" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fe.descripcion.errors }" />
+                            <div *ngIf="submitted && fe.descripcion.errors" class="invalid-feedback">
+                                <div *ngIf="fe.descripcion.errors.required">Descripcion is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <label for="puntuacion">Puntuacion</label>
+                            <app-custom-dropdown formControlName="puntuacion" [options]="optPuntuaciones"
+                                [ngClass]="{ 'is-invalid': submitted && fe.puntuacion.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && fe.puntuacion.errors" class="invalid-feedback">
+                                <div *ngIf="fe.puntuacion.errors.required || fe.puntuacion.errors.pattern">Puntuacion is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="idUsuario">ID Usuario</label>
+                            <app-custom-dropdown formControlName="idUsuario" [options]="optUsuarios"
+                                [ngClass]="{ 'is-invalid': submitted && fe.idUsuario.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && fe.idUsuario.errors" class="invalid-feedback">
+                                <div *ngIf="fe.idUsuario.errors.required || fe.idUsuario.errors.pattern">ID Usuario is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="idSerie">ID Serie</label>
+                            <app-custom-dropdown formControlName="idSerie" [options]="optSeries"
+                                [ngClass]="{ 'is-invalid': submitted && fe.idSerie.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && fe.idSerie.errors" class="invalid-feedback">
+                                <div *ngIf="fe.idSerie.errors.required || fe.idSerie.errors.pattern">ID Serie is
+                                    required
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 form-group">
+                            <label for="fecha">DateTime</label>
+                            <input class="form-control" #datepickerYMD="bsDatepicker" bsDatepicker
+                                formControlName="fecha" [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                                placeholder="DateTime: YYYY-MM-DD"
+                                [ngClass]="{ 'is-invalid': submitted && fe.fecha.errors }" type="text">
+                            <div *ngIf="submitted && fe.fecha.errors" class="invalid-feedback">
+                                <div *ngIf="fe.fecha.errors.required">DateTime is
+                                    required
+                                </div>
                             </div>
                         </div>
                     </div>

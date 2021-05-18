@@ -32,6 +32,14 @@ import { TableRepartoComponent } from './components/tables/table-reparto/table-r
 import { TableRoleComponent } from './components/tables/table-role/table-role.component';
 import { TableGeneroComponent } from './components/tables/table-genero/table-genero.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CustomDropdownComponent } from './components/custom-dropdown/custom-dropdown.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatePipe } from '@angular/common';
+import { TableSerieGeneroComponent } from './components/tables/table-serie-genero/table-serie-genero.component';
+import { TableSerieRepartoComponent } from './components/tables/table-serie-reparto/table-serie-reparto.component';
+import { TableRepartoRoleComponent } from './components/tables/table-reparto-role/table-reparto-role.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +67,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     TableSerieComponent,
     TableRepartoComponent,
     TableRoleComponent,
-    TableGeneroComponent
+    TableGeneroComponent,
+    CustomDropdownComponent,
+    TableSerieGeneroComponent,
+    TableSerieRepartoComponent,
+    TableRepartoRoleComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +80,15 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     FormsModule,
     NgbModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

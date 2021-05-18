@@ -1,0 +1,103 @@
+<div class="p-4">
+    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewseriegenero()">Add New Row</button>
+    <!--Datatable with Serie-Genero Details-->
+    <div class="table-responsive">
+        <table class="table table-striped table-sm text-center" id="datatable">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th scope="col">ID Serie</th>
+                    <th scope="col">ID Genero</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of data">
+                    <td scope="row">{{group.serieIdSerie}}</td>
+                    <td scope="row">{{group.generoIdGenero}}</td>
+                    <td class="justify-content-around d-flex">
+                        <button class="btn btn-warning" (click)="editseriegenero(group.serieIdSerie, group.generoIdGenero)"> <i class="fa fa-pencil"
+                                aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteseriegenero(group.serieIdSerie, group.generoIdGenero)"> <i class="fa fa-trash"
+                                aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Add Modal-->
+<div class="modal" id="addSerieGenero">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Add Serie-Genero Details</h4>
+                <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="idSerie">ID Serie</label>
+                            <app-custom-dropdown formControlName="idSerie" [options]="optSeries"
+                                [ngClass]="{ 'is-invalid': submitted && f.idSerie.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && f.idSerie.errors" class="invalid-feedback">
+                                <div *ngIf="f.idSerie.errors.required || f.idSerie.errors.pattern">ID Serie is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="idGenero">ID Serie</label>
+                            <app-custom-dropdown formControlName="idGenero" [options]="optGeneros"
+                                [ngClass]="{ 'is-invalid': submitted && f.idGenero.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && f.idGenero.errors" class="invalid-feedback">
+                                <div *ngIf="f.idGenero.errors.required || f.idGenero.errors.pattern">ID Genero is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Row</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit-->
+<div class="modal" id="editModal" *ngIf="showeditseriegenero">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Edit : Serie - {{seriegenerodata.serieID}} | Genero - {{seriegenerodata.generoID}}</h4>
+                <button type="button" class="btn btn-danger close" (click)="editClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="idSerie">ID Serie</label>
+                            <app-custom-dropdown formControlName="idSerie" [options]="optSeries"
+                                [ngClass]="{ 'is-invalid': submitted && fe.idSerie.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && fe.idSerie.errors" class="invalid-feedback">
+                                <div *ngIf="fe.idSerie.errors.required || fe.idSerie.errors.pattern">ID Serie is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="idGenero">ID Serie</label>
+                            <app-custom-dropdown formControlName="idGenero" [options]="optGeneros"
+                                [ngClass]="{ 'is-invalid': submitted && fe.idGenero.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && fe.idGenero.errors" class="invalid-feedback">
+                                <div *ngIf="fe.idGenero.errors.required || fe.idGenero.errors.pattern">ID Genero is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

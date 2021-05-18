@@ -1,0 +1,14 @@
+<div class="btn-group w-100" dropdown>
+    <button id="button-basic" dropdownToggle type="button" class="btn btn-outline-dark dropdown-toggle w-100"
+        aria-controls="dropdown-basic">
+        <span *ngIf="selectedOption!=null">{{ selectedOption }}</span>
+        <span *ngIf="selectedOption==null">Select a value</span>
+        <span class="caret"></span>
+    </button>
+
+    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem" *ngFor="let option of options" (click)="changeSelectedOption(option)">
+            <span class="dropdown-item"> {{ option }} </span>
+        </li>
+    </ul>
+</div>

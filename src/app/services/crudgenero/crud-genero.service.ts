@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
 export class CrudGeneroService {
   baseUrl: string = `${environment.apiUrl}/Admin`;
   generoData: any;
-  generoid: any;
   singlegenerodata: any;
   constructor(private http: HttpClient) { }
 

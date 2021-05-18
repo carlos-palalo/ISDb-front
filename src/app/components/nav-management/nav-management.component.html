@@ -44,10 +44,29 @@
                             <app-table-genero></app-table-genero>
                         </ng-template>
                     </div>
+                    <div [ngbNavItem]="7">
+                        <a ngbNavLink>Serie-Genero</a>
+                        <ng-template ngbNavContent>
+                            <app-table-serie-genero></app-table-serie-genero>
+                        </ng-template>
+                    </div>
+                    <div [ngbNavItem]="8">
+                        <a ngbNavLink>Serie-Reparto</a>
+                        <ng-template ngbNavContent>
+                            <app-table-serie-reparto></app-table-serie-reparto>
+                        </ng-template>
+                    </div>
+                    <div [ngbNavItem]="9">
+                        <a ngbNavLink>Reparto-Role</a>
+                        <ng-template ngbNavContent>
+                            <app-table-reparto-role></app-table-reparto-role>
+                        </ng-template>
+                    </div>
                 </div>
             </div>
             <div class="form-inline nav-item ms-md-3 d-flex mt-3 mt-md-0" *ngIf="currentUser">
-                <button type="button" class="btn btn-warning  btn-theme ripple w-100" (click)="logout()"> Logout </button>
+                <button type="button" class="btn btn-warning  btn-theme ripple w-100" (click)="logout()"> Logout
+                </button>
             </div>
         </div>
     </div>
@@ -55,4 +74,3 @@
 <main class="bg-dark">
     <div [ngbNavOutlet]="nav" class=" container bg-white min-vh-100"></div>
 </main>
-
