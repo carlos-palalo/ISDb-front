@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
 })
 export class RestService {
   private urlBase: string = `${environment.apiUrl}`;
-  private urlAdmin: string = this.urlBase + "Admin/";
-  private urlGeneral: string = this.urlBase + "General/";
-  private urlLogin: string = this.urlBase + "Login/";
+  private urlAdmin: string = this.urlBase + "/Admin/";
+  private urlGeneral: string = this.urlBase + "/General/";
+  private urlLogin: string = this.urlBase + "/Login/";
 
   constructor(
     private http: HttpClient,

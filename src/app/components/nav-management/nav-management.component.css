@@ -1,5 +1,6 @@
 .nav-link{
     color: orange;
+    padding: .5rem .8rem;
 }
 .nav-link.active{
     color: black;

@@ -31,6 +31,7 @@ import { TableSerieComponent } from './components/tables/table-serie/table-serie
 import { TableRepartoComponent } from './components/tables/table-reparto/table-reparto.component';
 import { TableRoleComponent } from './components/tables/table-role/table-role.component';
 import { TableGeneroComponent } from './components/tables/table-genero/table-genero.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { TableGeneroComponent } from './components/tables/table-genero/table-gen
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    NgSelectModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

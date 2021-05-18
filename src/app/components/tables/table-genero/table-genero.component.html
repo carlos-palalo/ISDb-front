@@ -1,12 +1,84 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-</table>
+<div class="p-4">
+    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewgenero()">Add New Genero</button>
+    <!--Datatable with Genero Details-->
+    <div class="table-responsive">
+        <table class="table table-striped table-sm text-center" id="datatable">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of data">
+                    <td scope="row">{{group.idGenero}}</td>
+                    <td>{{group.nombre}}</td>
+                    <td class="justify-content-around d-flex">
+                        <button class="btn btn-warning" (click)="editgenero(group.idGenero)"> <i class="fa fa-pencil"
+                                aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="deletegenero(group.idGenero)"> <i class="fa fa-trash"
+                                aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Add User Modal-->
+<div class="modal" id="addGenero">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Add Genero Details</h4>
+                <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" formControlName="nombre" class="form-control"
+                                placeholder="example: Drama"
+                                [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+                            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+                                <div *ngIf="f.nombre.errors.required">Nombre is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Genero</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit User-->
+<div class="modal" id="editModal" *ngIf="showeditgenero">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Edit : {{generodata.nombre}}</h4>
+                <button type="button" class="btn btn-danger close" (click)="editClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label>Nombre</label>
+                            <input type="text" formControlName="nombre" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fe.nombre.errors }" />
+                            <div *ngIf="submitted && fe.nombre.errors" class="invalid-feedback">
+                                <div *ngIf="fe.nombre.errors.required">Nombre is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

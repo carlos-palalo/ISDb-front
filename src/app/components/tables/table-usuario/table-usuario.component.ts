@@ -33,7 +33,7 @@ export class TableUsuarioComponent implements OnInit {
       this.data = ret;
       //console.log(this.data);
       setTimeout(() => {
-        $('#datatableexample').DataTable({
+        $('#datatable').DataTable({
           pagingType: 'full_numbers',
           pageLength: 5,
           processing: true,
@@ -196,12 +196,12 @@ export class TableUsuarioComponent implements OnInit {
     this.crudservice.getusers().subscribe((ret: any[]) => {
       this.data = ret;
 
-      $('#datatableexample').DataTable().destroy();
+      $('#datatable').DataTable().destroy();
       this.crudservice.getusers().subscribe((ret: any[]) => {
         this.data = ret;
         //console.log(this.data);
         setTimeout(() => {
-          $('#datatableexample').DataTable({
+          $('#datatable').DataTable({
             pagingType: 'full_numbers',
             pageLength: 5,
             processing: true,
