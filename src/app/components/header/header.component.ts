@@ -58,7 +58,12 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  get isAdmin(){
+  get isAdmin() {
     return this.currentUser && this.currentUser.tipo == Role.admin;
+  }
+
+  get isInfo() {
+    //console.log(this.router.url);
+    return this.router.url === '/myinfo';
   }
 }

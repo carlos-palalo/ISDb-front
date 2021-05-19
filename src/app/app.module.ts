@@ -41,6 +41,7 @@ import { TableSerieGeneroComponent } from './components/tables/table-serie-gener
 import { TableSerieRepartoComponent } from './components/tables/table-serie-reparto/table-serie-reparto.component';
 import { TableRepartoRoleComponent } from './components/tables/table-reparto-role/table-reparto-role.component';
 import { ReviewContainerComponent } from './components/review-container/review-container.component';
+import { MyinfoComponent } from './components/myinfo/myinfo.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ReviewContainerComponent } from './components/review-container/review-c
     TableSerieGeneroComponent,
     TableSerieRepartoComponent,
     TableRepartoRoleComponent,
-    ReviewContainerComponent
+    ReviewContainerComponent,
+    MyinfoComponent
   ],
   imports: [
     BrowserModule,

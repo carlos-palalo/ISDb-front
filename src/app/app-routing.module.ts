@@ -7,13 +7,15 @@ import { RegisterComponent } from './components/register/register.component';
 import { ManagementComponent } from './components/management/management.component';
 import { AuthGuard } from './guards/auth.guard';
 import { Role } from './models/role';
+import { MyinfoComponent } from './components/myinfo/myinfo.component';
 
 const routes: Routes = [
   { path: '', component: ListSerieComponent },
   { path: 'serie/:variable', component: SerieComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'management', component: ManagementComponent, canActivate: [AuthGuard], data: {roles: [Role.admin]} },
+  { path: 'management', component: ManagementComponent, canActivate: [AuthGuard], data: { roles: [Role.admin] } },
+  { path: 'myinfo', component: MyinfoComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];
 
