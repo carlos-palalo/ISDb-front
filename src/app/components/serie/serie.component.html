@@ -24,7 +24,7 @@
             <div class="card bg-dark text-left">
                 <button class="btn btn-link collapsed p-0 border-0" data-toggle="collapse" data-target="#collapseOne"
                     aria-expanded="false" aria-controls="collapseOne">
-                    <div class="card-header bg-black p-3 ps-4 " id="headingTwo">
+                    <div class="card-header bg-black p-3 ps-4 text-warning" id="headingTwo">
                         <h5 class="mb-0"> Directors </h5>
                     </div>
                 </button>
@@ -39,7 +39,7 @@
             <div class="card bg-dark text-left">
                 <button class="btn btn-link collapsed p-0 border-0" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="false" aria-controls="collapseTwo">
-                    <div class="card-header bg-black p-3 ps-4 " id="headingTwo">
+                    <div class="card-header bg-black p-3 ps-4 text-warning" id="headingTwo">
                         <h5 class="mb-0"> Writers </h5>
                     </div>
                 </button>
@@ -54,7 +54,7 @@
             <div class="card bg-dark text-left">
                 <button class="btn btn-link collapsed p-0 border-0" data-toggle="collapse" data-target="#collapseThree"
                     aria-expanded="false" aria-controls="collapseThree">
-                    <div class="card-header bg-black p-3 ps-4 " id="headingTwo">
+                    <div class="card-header bg-black p-3 ps-4 text-warning" id="headingTwo">
                         <h5 class="mb-0"> Actors </h5>
                     </div>
                 </button>
@@ -72,6 +72,7 @@
                 </div>
             </div>
         </div>
+        <app-review-container [data]="listReview" [serie]="respuesta.idSerie"></app-review-container>
     </div>
 </main>
 <app-footer></app-footer>

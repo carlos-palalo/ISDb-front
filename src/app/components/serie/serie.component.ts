@@ -13,6 +13,7 @@ export class SerieComponent implements OnInit {
   public listDirector: Array<any> = [];
   public listWriter: Array<any> = [];
   public listActor: Array<any> = [];
+  public listReview: Array<any> = [];
 
   constructor(private route: ActivatedRoute, private RestService: RestService) { }
 
@@ -51,6 +52,7 @@ export class SerieComponent implements OnInit {
           break;
       }
     });
+    this.listReview = this.respuesta.listaReview;
     this.resetHeader.filter_value="";
     this.resetHeader.resetSearch();
   }

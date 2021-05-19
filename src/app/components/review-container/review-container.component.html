@@ -1,0 +1,72 @@
+<div class="mt-5">
+    <div class="d-flex">
+        <h3 class="text-warning mb-4">Reviews</h3>
+        <button class="btn btn-warning text-black mb-4 ms-auto" (click)="addReview()" *ngIf="currentUser">Post a
+            Review</button>
+    </div>
+    <div class="overflow-y">
+        <div class="px-3 px-md-5 py-3 bg-white text-dark border border-warning review" *ngFor="let item of data">
+            <div class="header d-flex mb-3 align-items-center flex-wrap">
+                <div class="text-secondary">@{{item.usuario}}</div>
+                <div class="h5 ms-2 ms-md-5 bold">{{item.title}}</div>
+                <div class="ms-auto">
+                    <ngb-rating [rate]="item.puntuacion">
+                        <ng-template let-fill="fill">
+                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                        </ng-template>
+                    </ngb-rating>
+                </div>
+                <div class="h6 ms-md-5">{{item.fecha}}</div>
+            </div>
+            <div class="body text-justify mb-3">{{item.descripcion}}</div>
+        </div>
+    </div>
+</div>
+
+<!--Add Review Modal-->
+<div class="modal" id="addReview">
+    <div class="modal-dialog modal-dialog-centered text-dark">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Post a Review</h4>
+                <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" formControlName="titulo" class="form-control"
+                                placeholder="example: A Masterpiece!"
+                                [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" />
+                            <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                                <div *ngIf="f.titulo.errors.required">Titulo is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="puntuacion">Puntuacion</label>
+                            <app-custom-dropdown formControlName="puntuacion" [options]="optPuntuaciones"
+                                [ngClass]="{ 'is-invalid': submitted && f.puntuacion.errors }"></app-custom-dropdown>
+                            <div *ngIf="submitted && f.puntuacion.errors" class="invalid-feedback">
+                                <div *ngIf="f.puntuacion.errors.required || f.puntuacion.errors.pattern">Puntuacion is
+                                    required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="descripcion">Descripcion</label>
+                            <textarea formControlName="descripcion" class="form-control"
+                                placeholder="example: This is incredible"
+                                [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }"></textarea>
+                            <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                                <div *ngIf="f.descripcion.errors.required">Descripcion is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Review</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

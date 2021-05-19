@@ -1,16 +1,171 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Titulo</th>
-            <th scope="col">Poster</th>
-            <th scope="col">Year</th>
-            <th scope="col">Sinopsis</th>
-            <th scope="col">Trailer</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-</table>
+<div class="p-4">
+    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnew()">Add New Serie</button>
+    <!--Datatable with Review Details-->
+    <div class="table-responsive">
+        <table class="table table-striped table-sm text-center" id="datatable">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Poster</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Sinopsis</th>
+                    <th scope="col">Trailer</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let group of data">
+                    <td scope="row">{{group.idSerie}}</td>
+                    <td>{{group.titulo}}</td>
+                    <td>{{group.poster}}</td>
+                    <td>{{group.year}}</td>
+                    <td>{{group.sinopsis}}</td>
+                    <td>{{group.trailer}}</td>
+                    <td class="justify-content-around d-flex">
+                        <button class="btn btn-warning" (click)="edit(group.idSerie)"> <i class="fa fa-pencil"
+                                aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-danger" (click)="deleteserie(group.idSerie)"> <i class="fa fa-trash"
+                                aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Add Review Modal-->
+<div class="modal" id="addModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Add Serie Details</h4>
+                <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" formControlName="titulo" class="form-control"
+                                placeholder="example: Los Serrano"
+                                [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }" />
+                            <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                                <div *ngIf="f.titulo.errors.required">Titulo is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="poster">Poster</label>
+                            <input type="text" formControlName="poster" class="form-control"
+                                placeholder="example: https://**"
+                                [ngClass]="{ 'is-invalid': submitted && f.poster.errors }" />
+                            <div *ngIf="submitted && f.poster.errors" class="invalid-feedback">
+                                <div *ngIf="f.poster.errors.required">Poster is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="year">Year</label>
+                            <input type="text" formControlName="year" class="form-control" placeholder="example: YYYY"
+                                [ngClass]="{ 'is-invalid': submitted && f.year.errors }" />
+                            <div *ngIf="submitted && f.year.errors" class="invalid-feedback">
+                                <div *ngIf="f.year.errors.required">Year is required</div>
+                                <div *ngIf="f.year.errors.pattern">Year between: 1900-2099</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="trailer">Trailer</label>
+                            <input type="text" formControlName="trailer" class="form-control"
+                                placeholder="example: https://**"
+                                [ngClass]="{ 'is-invalid': submitted && f.trailer.errors }" />
+                            <div *ngIf="submitted && f.trailer.errors" class="invalid-feedback">
+                                <div *ngIf="f.trailer.errors.required">Trailer is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="sinopsis">Sinopsis</label>
+                            <input type="text" formControlName="sinopsis" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.sinopsis.errors }" />
+                            <div *ngIf="submitted && f.sinopsis.errors" class="invalid-feedback">
+                                <div *ngIf="f.sinopsis.errors.required">Sinopsis is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Serie</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Edit Review-->
+<div class="modal" id="editModal" *ngIf="showedit">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title align-center">Edit : {{seriedata.titulo}}</h4>
+                <button type="button" class="btn btn-danger close" (click)="editClose()">Close</button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editForm" (ngSubmit)="onSubmitEdit()">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="titulo">Titulo</label>
+                            <input type="text" formControlName="titulo" class="form-control"
+                                placeholder="example: Los Serrano"
+                                [ngClass]="{ 'is-invalid': submitted && fe.titulo.errors }" />
+                            <div *ngIf="submitted && fe.titulo.errors" class="invalid-feedback">
+                                <div *ngIf="fe.titulo.errors.required">Titulo is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="poster">Poster</label>
+                            <input type="text" formControlName="poster" class="form-control"
+                                placeholder="example: https://**"
+                                [ngClass]="{ 'is-invalid': submitted && fe.poster.errors }" />
+                            <div *ngIf="submitted && fe.poster.errors" class="invalid-feedback">
+                                <div *ngIf="fe.poster.errors.required">Poster is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="year">Year</label>
+                            <input type="text" formControlName="year" class="form-control" placeholder="example: YYYY"
+                                [ngClass]="{ 'is-invalid': submitted && fe.year.errors }" />
+                            <div *ngIf="submitted && fe.year.errors" class="invalid-feedback">
+                                <div *ngIf="fe.year.errors.required">Year is required</div>
+                                <div *ngIf="fe.year.errors.pattern">Year between: 1900-2099</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="trailer">Trailer</label>
+                            <input type="text" formControlName="trailer" class="form-control"
+                                placeholder="example: https://**"
+                                [ngClass]="{ 'is-invalid': submitted && fe.trailer.errors }" />
+                            <div *ngIf="submitted && fe.trailer.errors" class="invalid-feedback">
+                                <div *ngIf="fe.trailer.errors.required">Trailer is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-12">
+                            <label for="sinopsis">Sinopsis</label>
+                            <input type="text" formControlName="sinopsis" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && fe.sinopsis.errors }" />
+                            <div *ngIf="submitted && fe.sinopsis.errors" class="invalid-feedback">
+                                <div *ngIf="fe.sinopsis.errors.required">Sinopsis is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

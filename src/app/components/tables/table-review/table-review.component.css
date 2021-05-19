@@ -1,3 +1,6 @@
 table.dataTable tbody th, table.dataTable tbody td{
     padding: 8px 0px;
 }
+.btn-warning{
+    font-weight: bold;
+}

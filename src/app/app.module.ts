@@ -40,6 +40,7 @@ import { DatePipe } from '@angular/common';
 import { TableSerieGeneroComponent } from './components/tables/table-serie-genero/table-serie-genero.component';
 import { TableSerieRepartoComponent } from './components/tables/table-serie-reparto/table-serie-reparto.component';
 import { TableRepartoRoleComponent } from './components/tables/table-reparto-role/table-reparto-role.component';
+import { ReviewContainerComponent } from './components/review-container/review-container.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { TableRepartoRoleComponent } from './components/tables/table-reparto-rol
     CustomDropdownComponent,
     TableSerieGeneroComponent,
     TableSerieRepartoComponent,
-    TableRepartoRoleComponent
+    TableRepartoRoleComponent,
+    ReviewContainerComponent
   ],
   imports: [
     BrowserModule,

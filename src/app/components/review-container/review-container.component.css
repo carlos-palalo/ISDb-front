@@ -1,0 +1,64 @@
+.border {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.overflow-y {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.overflow-y>div {
+    transition: background-color 0.5s;
+}
+
+.overflow-y>div:hover {
+    background-color: #dddddd !important;
+}
+
+/****************************************************/
+
+/* Css from https://codepen.io/devstreak/pen/dMYgeO */
+
+.overflow-y::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.overflow-y::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.overflow-y::-webkit-scrollbar-thumb {
+    background-color: #F90;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent)
+}
+
+/****************************************************/
+
+.star {
+    font-size: 1.5rem;
+    color: #b0c4de;
+}
+
+.filled {
+    color: #F90;
+}
+
+.bold {
+    font-weight: bold !important;
+}
+
+.h5, .h6 {
+    margin-bottom: 0px !important;
+}
+
+.btn{
+    font-weight: bold;
+}
