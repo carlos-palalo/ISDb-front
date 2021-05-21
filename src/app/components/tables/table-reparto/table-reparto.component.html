@@ -1,6 +1,6 @@
 <div class="p-4">
     <div class="d-flex align-items-center">
-        <button class="btn btn-warning text-black me-auto px-2 px-md-3" (click)="addnew()">Add Row</button>
+        <button class="btn btn-warning text-black me-auto px-1 px-sm-2 px-md-3" (click)="addnew()">Add Row</button>
         <form [formGroup]="serieForm" (ngSubmit)="onSearchSerie()" class="mb-3 mt-3 ">
             <div class="d-flex align-items-center">
                 <label for="idSerie">ID Serie:</label>
@@ -12,7 +12,7 @@
                         <div *ngIf="s.idSerie.errors.pattern">ID Serie must be a number</div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary w-auto">Search</button>
+                <button type="submit" class="btn btn-warning w-auto">Search</button>
             </div>
         </form>
     </div>
@@ -33,7 +33,7 @@
                     <td>{{group.name}}</td>
                     <td>{{group.foto}}</td>
                     <td class="justify-content-around d-flex">
-                        <button class="btn btn-warning" (click)="edit(group.idReparto)"> <i class="fa fa-pencil"
+                        <button class="btn btn-success" (click)="edit(group.idReparto)"> <i class="fa fa-pencil"
                                 aria-hidden="true"></i>
                         </button>
                         <button class="btn btn-danger" (click)="deletereparto(group.idReparto)"> <i class="fa fa-trash"
@@ -51,7 +51,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content ">
             <div class="modal-header">
-                <h4 class="modal-title align-center">Add Reparto Details</h4>
+                <h4 class="modal-title align-center">Reparto Details</h4>
                 <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
             </div>
             <div class="modal-body">
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Reparto</button>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Add Reparto</button>
                 </form>
             </div>
         </div>
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Update</button>
                 </form>
             </div>
         </div>

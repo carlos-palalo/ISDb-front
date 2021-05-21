@@ -1,3 +1,19 @@
-.btn-warning{
+td {
+    max-width: 200px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.btn-warning {
     font-weight: bold;
+}
+
+.form-control {
+    border: 1px solid orange;
+}
+
+.form-control:focus {
+    border-color: rgb(255, 165, 0);
+    box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);
 }

@@ -1,5 +1,5 @@
 <div class="p-4">
-    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewseriegenero()">Add New Row</button>
+    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewseriegenero()">Add Row</button>
     <!--Datatable with Serie-Genero Details-->
     <div class="table-responsive">
         <table class="table table-striped table-sm text-center" id="datatable">
@@ -15,7 +15,7 @@
                     <td scope="row">{{group.serieIdSerie}}</td>
                     <td scope="row">{{group.generoIdGenero}}</td>
                     <td class="justify-content-around d-flex">
-                        <button class="btn btn-warning" (click)="editseriegenero(group.serieIdSerie, group.generoIdGenero)"> <i class="fa fa-pencil"
+                        <button class="btn btn-success" (click)="editseriegenero(group.serieIdSerie, group.generoIdGenero)"> <i class="fa fa-pencil"
                                 aria-hidden="true"></i>
                         </button>
                         <button class="btn btn-danger" (click)="deleteseriegenero(group.serieIdSerie, group.generoIdGenero)"> <i class="fa fa-trash"
@@ -33,7 +33,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content ">
             <div class="modal-header">
-                <h4 class="modal-title align-center">Add Serie-Genero Details</h4>
+                <h4 class="modal-title align-center">Serie-Genero Details</h4>
                 <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
             </div>
             <div class="modal-body">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Row</button>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Add Row</button>
                 </form>
             </div>
         </div>
@@ -70,7 +70,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title align-center">Edit : Serie - {{seriegenerodata.serieID}} | Genero - {{seriegenerodata.generoID}}</h4>
+                <h4 class="modal-title align-center">Edit : Serie - {{seriegenerodata.serieIdSerie}} | Genero - {{seriegenerodata.generoIdGenero}}</h4>
                 <button type="button" class="btn btn-danger close" (click)="editClose()">Close</button>
             </div>
             <div class="modal-body">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Update</button>
                 </form>
             </div>
         </div>

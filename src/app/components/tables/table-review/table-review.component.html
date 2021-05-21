@@ -1,5 +1,5 @@
 <div class="p-4">
-    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewreview()">Add New Review</button>
+    <button class="btn btn-warning text-black mb-3 mt-3" (click)="addnewreview()">Add Row</button>
     <!--Datatable with Review Details-->
     <div class="table-responsive">
         <table class="table table-striped table-sm text-center" id="datatable">
@@ -25,7 +25,7 @@
                     <td>{{group.usuarioIdUsuario}}</td>
                     <td>{{group.serieIdSerie}}</td>
                     <td class="justify-content-around d-flex">
-                        <button class="btn btn-warning" (click)="editreview(group.idReview)"> <i class="fa fa-pencil"
+                        <button class="btn btn-success" (click)="editreview(group.idReview)"> <i class="fa fa-pencil"
                                 aria-hidden="true"></i>
                         </button>
                         <button class="btn btn-danger" (click)="deletereview(group.idReview)"> <i class="fa fa-trash"
@@ -43,7 +43,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content ">
             <div class="modal-header">
-                <h4 class="modal-title align-center">Add Review Details</h4>
+                <h4 class="modal-title align-center">Review Details</h4>
                 <button type="button" class="btn btn-danger" (click)="addClose()">Close</button>
             </div>
             <div class="modal-body">
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Add Review</button>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Add Review</button>
                 </form>
             </div>
         </div>
@@ -176,7 +176,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Update</button>
+                    <button type="submit" class="btn btn-warning w-100 mt-3">Update</button>
                 </form>
             </div>
         </div>

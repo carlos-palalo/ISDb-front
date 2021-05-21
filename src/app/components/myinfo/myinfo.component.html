@@ -1,60 +1,58 @@
 <app-header></app-header>
 <main class="bg-dark">
-    <div class="container bg-white min-vh-100 p-5">
-        <div class="row">
-            <div class="col-md-6">
-                <form [formGroup]="infoForm" (ngSubmit)="onSubmitInfo()">
-                    <div class="row">
-                        <div class="form-group col-sm-6">
-                            <label for="username">Username</label>
-                            <input type="text" formControlName="username" class="form-control"
-                                placeholder="example: pedro"
-                                [ngClass]="{ 'is-invalid': submittedInfo && i.username.errors }" />
-                            <div *ngIf="submittedInfo && i.username.errors" class="invalid-feedback">
-                                <div *ngIf="i.username.errors.required">Name is required</div>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label for="email">Email</label>
-                            <input type="text" formControlName="email" class="form-control"
-                                placeholder="example: email@gmail.com"
-                                [ngClass]="{ 'is-invalid': submittedInfo && i.email.errors }" />
-                            <div *ngIf="submittedInfo && i.email.errors" class="invalid-feedback">
-                                <div *ngIf="i.email.errors.required">Email is required</div>
-                                <div *ngIf="i.email.errors.pattern">Example: email@gmail.com</div>
-                            </div>
+    <div class="container bg-white min-vh-100 p-5 align-items-center d-flex flex-column">
+        <h1 class="mt-5">My Information</h1>
+        <div class="col-md-6 mx-auto ">
+            <form [formGroup]="infoForm" (ngSubmit)="onSubmitInfo()">
+                <div class="row">
+                    <div class="form-group col-md-6 ">
+                        <label for="username">Username</label>
+                        <input type="text" formControlName="username" class="form-control" placeholder="example: pedro"
+                            [ngClass]="{ 'is-invalid': submittedInfo && i.username.errors }" />
+                        <div *ngIf="submittedInfo && i.username.errors" class="invalid-feedback">
+                            <div *ngIf="i.username.errors.required">Name is required</div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Update Information</button>
-                </form>
-            </div>
-            <div class="col-md-6">
-                <form [formGroup]="passForm" (ngSubmit)="onSubmitPass()">
-                    <div class="row">
-                        <div class="form-group col-sm-12">
-                            <label for="pass">Password</label>
-                            <input type="password" formControlName="pass" class="form-control" placeholder="******"
-                                [ngClass]="{ 'is-invalid': submittedPass && p.pass.errors }" />
-                            <div *ngIf="submittedPass && p.pass.errors" class="invalid-feedback">
-                                <div *ngIf="p.pass.errors.required">Password is required</div>
-                                <div *ngIf="p.pass.errors.pattern">At least 1 number, 1 Uppercase letter, 1
-                                    Lowercase letter and min 8 letters</div>
-                            </div>
-                        </div>
-                        <div class="form-group col-sm-12">
-                            <label for="confirm">Confirm Password</label>
-                            <input type="password" formControlName="confirm" class="form-control" placeholder="******"
-                                [ngClass]="{ 'is-invalid': submittedPass && p.confirm.errors }" />
-                            <div *ngIf="submittedPass && p.confirm.errors" class="invalid-feedback">
-                                <div *ngIf="p.confirm.errors.required">Password is required</div>
-                                <div *ngIf="p.confirm.errors.pattern">At least 1 number, 1 Uppercase letter, 1
-                                    Lowercase letter and min 8 letters</div>
-                            </div>
+                    <div class="form-group col-md-6">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" class="form-control"
+                            placeholder="example: email@gmail.com"
+                            [ngClass]="{ 'is-invalid': submittedInfo && i.email.errors }" />
+                        <div *ngIf="submittedInfo && i.email.errors" class="invalid-feedback">
+                            <div *ngIf="i.email.errors.required">Email is required</div>
+                            <div *ngIf="i.email.errors.pattern">Example: email@gmail.com</div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mt-3">Update Information</button>
-                </form>
-            </div>
+                </div>
+                <button type="submit" class="btn btn-outline-dark w-100 mt-3">Update Information</button>
+            </form>
+        </div>
+        <div class="col-md-6 mx-auto mb-auto mt-5">
+            <form [formGroup]="passForm" (ngSubmit)="onSubmitPass()">
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="pass">Password</label>
+                        <input type="password" formControlName="pass" class="form-control" placeholder="******"
+                            [ngClass]="{ 'is-invalid': submittedPass && p.pass.errors }" />
+                        <div *ngIf="submittedPass && p.pass.errors" class="invalid-feedback">
+                            <div *ngIf="p.pass.errors.required">Password is required</div>
+                            <div *ngIf="p.pass.errors.pattern">At least 1 number, 1 Uppercase letter, 1
+                                Lowercase letter and min 8 letters</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" formControlName="confirm" class="form-control" placeholder="******"
+                            [ngClass]="{ 'is-invalid': submittedPass && p.confirm.errors }" />
+                        <div *ngIf="submittedPass && p.confirm.errors" class="invalid-feedback">
+                            <div *ngIf="p.confirm.errors.required">Password is required</div>
+                            <div *ngIf="p.confirm.errors.pattern">At least 1 number, 1 Uppercase letter, 1
+                                Lowercase letter and min 8 letters</div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-warning w-100 mt-3">Change Password</button>
+            </form>
         </div>
     </div>
 </main>
