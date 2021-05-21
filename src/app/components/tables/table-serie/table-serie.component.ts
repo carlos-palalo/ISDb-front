@@ -62,6 +62,11 @@ export class TableSerieComponent implements OnInit {
     });
   }
 
+  //Generate BBDD
+  generateBBDD(){
+    
+  }
+
   //Add Form
   addForm: FormGroup;
   submitted = false;
