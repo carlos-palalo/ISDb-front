@@ -4,6 +4,7 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { CrudReviewService } from 'src/app/services/crudreview/crud-review.service';
+import { RestService } from 'src/app/services/rest/rest.service';
 import { SwalService } from 'src/app/services/swal/swal.service';
 declare let $: any;
 
@@ -22,7 +23,7 @@ export class ReviewContainerComponent implements OnInit {
   constructor(
     config: NgbRatingConfig,
     private authenticationService: AuthenticationService,
-    private crudservice: CrudReviewService,
+    private service: RestService,
     private _swal: SwalService,
     private formBuilder: FormBuilder
   ) {
@@ -68,7 +69,7 @@ export class ReviewContainerComponent implements OnInit {
       myFormData.append('idUsuario', this.authenticationService.getDecodedAccessToken(this.currentUser.token).idUsuario);
       myFormData.append('idSerie', this.serie);
 
-      this.crudservice.addreview(myFormData)
+      this.service.addreview(myFormData)
         .subscribe(
           response => {
             console.log(response);

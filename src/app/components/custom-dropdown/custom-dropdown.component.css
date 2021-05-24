@@ -1,5 +1,5 @@
 ul {
-    max-height: 200px;
+    max-height: 175px;
     overflow: auto;
     cursor: pointer;
 }
