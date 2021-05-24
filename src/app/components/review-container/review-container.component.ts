@@ -76,11 +76,13 @@ export class ReviewContainerComponent implements OnInit {
             this.submitted = true;
             this._swal.success("Review has been added successfully");
             $("#addReview").modal("hide");
+            this.ngOnInit();
           },
           error => {
             console.log(error);
             this._swal.error();
             $("#addReview").modal("hide");
+            this.ngOnInit();
           });
     }
   }
