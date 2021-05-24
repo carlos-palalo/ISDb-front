@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { SwalService } from 'src/app/services/swal/swal.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private _swal: SwalService
   ) {
     // redirect to home if already logged in
     if (this.authenticationService.currentUserValue) {
@@ -55,10 +57,12 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this._swal.success("Login Successfull!");
           this.router.navigate([this.returnUrl]);
         },
         error => {
           this.error = error;
+          this._swal.error();
           this.loading = false;
         });
     /*.subscribe({

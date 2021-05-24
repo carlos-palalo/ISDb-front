@@ -32,8 +32,15 @@ export class SwalService {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Something went wrong!',
-      footer: 'See logs for more info'
+      text: 'Something went wrong!'
+    })
+  }
+
+  public customError(msg: string) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: msg
     })
   }
 
