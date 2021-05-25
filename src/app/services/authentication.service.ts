@@ -9,8 +9,8 @@ import jwt_decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
   constructor(
     private http: HttpClient,
@@ -20,8 +20,12 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): any {
     return this.currentUserSubject.value;
+  }
+
+  public get currentObjUser(): any{
+    return this.getDecodedAccessToken(this.currentUserSubject.value);
   }
 
   login(username: string, password: string) {

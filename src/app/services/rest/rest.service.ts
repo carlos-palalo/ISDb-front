@@ -33,6 +33,6 @@ export class RestService {
       usuarioIdUsuario: form.get('idUsuario'),
       serieIdSerie: form.get('idSerie'),
     };
-    return this.http.post(`${this.baseUrl}/postreview`, json);
+    return this.http.post(`${this.baseUrl}postreview`, json);
   }
 }

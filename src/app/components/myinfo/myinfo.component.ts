@@ -41,8 +41,8 @@ export class MyinfoComponent implements OnInit {
       confirm: ['', [Validators.required, Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{8,30}$/)]]
     });
 
-    //console.log(this.authenticationService.getDecodedAccessToken(this.user.token).idUsuario);
-    this.myinfoservice.getusuario(this.authenticationService.getDecodedAccessToken(this.user.token).idUsuario).subscribe((ret: any[]) => {
+    //console.log(this.authenticationService.getDecodedAccessToken(this.user));
+    this.myinfoservice.getusuario(this.authenticationService.getDecodedAccessToken(this.user).idUsuario).subscribe((ret: any[]) => {
       this.data = ret;
       this.infoForm.controls["username"].setValue(this.data.username);
       this.infoForm.controls["email"].setValue(this.data.email);
@@ -105,12 +105,11 @@ export class MyinfoComponent implements OnInit {
 
       // Begin assigning parameters
       myFormData.append('idUsuario', this.data.idUsuario);
-      myFormData.append('password', this.passForm.value.password);
+      myFormData.append('password', this.passForm.value.pass);
 
       this.myinfoservice.updatepass(myFormData)
         .subscribe(
           response => {
-            console.log(response);
             this.submittedPass = true;
             this._swal.success("Password has been updated successfully");
             this.ngOnInit();

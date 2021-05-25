@@ -31,7 +31,7 @@ export class SerieComponent implements OnInit {
   public cargarData(id: string) {
     this.RestService.getSerie(id)
       .subscribe(respuesta => {
-        console.log(respuesta);
+        //console.log(respuesta);
         this.respuesta = respuesta;
         this.cargarListas();
       });

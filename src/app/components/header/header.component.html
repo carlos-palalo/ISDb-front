@@ -19,11 +19,11 @@
                 </div>
             </div>
 
-            <div class="form-inline nav-item ms-md-3 d-flex" *ngIf="!currentUser">
+            <div class="form-inline nav-item ms-md-3 d-flex" *ngIf="!token">
                 <button type="button" class="btn btn-warning btn-theme ripple me-3" routerLink="/login"> Login </button>
                 <button type="button" class="btn btn-warning btn-theme ripple" routerLink="/register"> Sign up </button>
             </div>
-            <div class="form-inline nav-item ms-md-3 d-flex" *ngIf="currentUser">
+            <div class="form-inline nav-item ms-md-3 d-flex" *ngIf="token">
                 <button type="button" class="btn btn-warning btn-theme ripple me-3" routerLink="/management" *ngIf="isAdmin"> Management </button>
                 <button type="button" class="btn btn-warning btn-theme ripple" (click)="logout()" *ngIf="isInfo"> Logout </button>
                 <button type="button" class="btn btn-warning btn-theme ripple" routerLink="/myinfo" *ngIf="!isInfo"> MyInfo </button>

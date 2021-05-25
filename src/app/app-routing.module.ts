@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'serie/:variable', component: SerieComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'management', component: ManagementComponent, canActivate: [AuthGuard], data: { roles: [Role.admin] } },
+  { path: 'management', component: ManagementComponent, canActivate: [AuthGuard] },
   { path: 'myinfo', component: MyinfoComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '' }
 ];

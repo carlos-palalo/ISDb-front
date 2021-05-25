@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { CrudReviewService } from 'src/app/services/crudreview/crud-review.service';
 import { RestService } from 'src/app/services/rest/rest.service';
 import { SwalService } from 'src/app/services/swal/swal.service';
 declare let $: any;
@@ -25,11 +25,12 @@ export class ReviewContainerComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private service: RestService,
     private _swal: SwalService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     config.readonly = true;
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-    console.log(this.currentUser);
+    //console.log(this.currentUser);
   }
 
   ngOnInit(): void {
@@ -50,10 +51,8 @@ export class ReviewContainerComponent implements OnInit {
   get f() { return this.addForm.controls; }
 
   onSubmit() {
-    console.log(this.addForm.value.puntuacion);
     this.submitted = true;
     // stop here if form is invalid
-    console.log(this.authenticationService.getDecodedAccessToken(this.currentUser.token).idUsuario);
     if (this.addForm.invalid) {
       return;
     }
@@ -62,27 +61,27 @@ export class ReviewContainerComponent implements OnInit {
       // Initialize Params Object
       var myFormData = new FormData();
       // Begin assigning parameters
-      
+
       myFormData.append('titulo', this.addForm.value.titulo);
       myFormData.append('descripcion', this.addForm.value.descripcion);
       myFormData.append('puntuacion', this.addForm.value.puntuacion);
-      myFormData.append('idUsuario', this.authenticationService.getDecodedAccessToken(this.currentUser.token).idUsuario);
+      myFormData.append('idUsuario', this.authenticationService.currentObjUser.idUsuario);
       myFormData.append('idSerie', this.serie);
-
+      console.log(myFormData);
       this.service.addreview(myFormData)
         .subscribe(
           response => {
-            console.log(response);
+            //console.log(response);
             this.submitted = true;
             this._swal.success("Review has been added successfully");
             $("#addReview").modal("hide");
-            this.ngOnInit();
+            this.reloadCurrentRoute();
           },
           error => {
-            console.log(error);
+            //console.log(error);
             this._swal.error();
             $("#addReview").modal("hide");
-            this.ngOnInit();
+            this.reloadCurrentRoute();
           });
     }
   }
@@ -94,5 +93,12 @@ export class ReviewContainerComponent implements OnInit {
   //Add New Review Function
   addReview() {
     $("#addReview").modal("show");
+  }
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 }

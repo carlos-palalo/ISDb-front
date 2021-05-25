@@ -60,7 +60,7 @@ export class RegisterComponent implements OnInit {
         },
         error: error => {
           this._swal.error();
-          this.error = error;
+          this.error = "Username or email already exists";
           this.loading = false;
         }
       });
