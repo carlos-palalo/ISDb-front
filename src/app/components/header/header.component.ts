@@ -14,7 +14,7 @@ import { Role } from 'src/app/models/role';
 })
 export class HeaderComponent implements OnInit {
   public listaSeries: any = [];
-  currentUser: User;
+  token: any;
   filter_value = '';
 
   constructor(
@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentUser.subscribe(x => { this.token = authenticationService.getDecodedAccessToken(x) });
   }
 
   @ViewChild(SearchComponent)
@@ -30,10 +30,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarData();
-  }
-
-  ngOnChange(): void {
-    console.log("aaa");
   }
 
   public cargarData() {
@@ -59,7 +55,8 @@ export class HeaderComponent implements OnInit {
   }
 
   get isAdmin() {
-    return this.currentUser && this.currentUser.tipo == Role.admin;
+    //console.log(this.token);
+    return this.token && this.token.role == Role.admin;
   }
 
   get isInfo() {
