@@ -21,5 +21,4 @@ export class ModalVideoComponent {
   sanitizeVideoUrl() {
     return this.sanitizer.bypassSecurityTrustResourceUrl(this.urlVideo + "?autoplay=false&width=500");
   }
-  //<iframe src="https://www.imdb.com/video/imdb/vi3535257625/imdb/embed" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no"></iframe>
 }

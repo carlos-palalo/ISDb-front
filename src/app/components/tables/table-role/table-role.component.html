@@ -12,14 +12,14 @@
             </thead>
             <tbody>
                 <tr *ngFor="let group of data">
-                    <td >{{group.idRole}}</td>
-                    <td >{{group.nombre}}</td>
+                    <td>{{group.idRole}}</td>
+                    <td>{{group.nombre}}</td>
                     <td class="justify-content-around d-flex">
                         <button class="btn btn-success" (click)="editrole(group.idRole)" disabled> <i
                                 class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
-                        <button class="btn btn-danger" (click)="deleterole(group.idRole)" disabled> <i class="fa fa-trash"
-                                aria-hidden="true"></i>
+                        <button class="btn btn-danger" (click)="deleterole(group.idRole)" disabled> <i
+                                class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </td>
                 </tr>

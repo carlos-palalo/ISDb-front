@@ -24,7 +24,7 @@ export class AuthenticationService {
     return this.currentUserSubject.value;
   }
 
-  public get currentObjUser(): any{
+  public get currentObjUser(): any {
     return this.getDecodedAccessToken(this.currentUserSubject.value);
   }
 
@@ -32,10 +32,6 @@ export class AuthenticationService {
     return this.http.post<any>(`${environment.apiUrl}/Login/login`, { username, password })
       .pipe(map(user => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
-        let tokenInfo = this.getDecodedAccessToken(user);
-        //let objToken = JSON.parse(tokenInfo);
-
-        //localStorage.setItem('currentUser', JSON.stringify(tokenInfo.unique_name + "," + tokenInfo.Role + "," + user));
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;

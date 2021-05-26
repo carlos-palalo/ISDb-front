@@ -31,7 +31,7 @@ export class MyinfoService {
     return this.http.put(`${this.baseUrl}/updatepass`, json);
   }
 
-  public getusuario(user){
+  public getusuario(user) {
     return this.http.get(`${this.baseUrl}/getusuario/${user}`);
   }
 }

@@ -18,8 +18,8 @@ export class CustomDropdownComponent implements OnInit, ControlValueAccessor {
 
   onChange: (_: any) => {};
 
-  constructor() { 
-    this.selectedOption =null;
+  constructor() {
+    this.selectedOption = null;
   }
 
   ngOnInit() {

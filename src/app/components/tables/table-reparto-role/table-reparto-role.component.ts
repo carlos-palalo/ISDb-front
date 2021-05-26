@@ -180,9 +180,9 @@ export class TableRepartoRoleComponent implements OnInit {
   editForm: FormGroup;
   roleID: any;
   repartoID: any;
-  edit(reparto,role ) {
+  edit(reparto, role) {
     //user details post request
-    this.crudservice.getsingle(reparto,role)
+    this.crudservice.getsingle(reparto, role)
       .subscribe(
         data => {
           this.seriegenerodata = data;

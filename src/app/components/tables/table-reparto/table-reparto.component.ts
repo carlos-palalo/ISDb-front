@@ -27,7 +27,7 @@ export class TableRepartoComponent implements OnInit {
     });
 
     this.serieForm = this.formBuilder.group({
-        idSerie: ['', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]]
+      idSerie: ['', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]]
     });
 
     this.serieForm.controls["idSerie"].setValue("1");
@@ -59,16 +59,16 @@ export class TableRepartoComponent implements OnInit {
   serieForm: FormGroup;
   submittedSerie = false;
   get s() { return this.serieForm.controls; }
-  
+
   onSearchSerie() {
-    this.submittedSerie=true;
+    this.submittedSerie = true;
     //console.log(this.serieForm.value.idSerie);
-    
-    if(this.serieForm.invalid){
+
+    if (this.serieForm.invalid) {
       return;
     }
 
-    if(this.submittedSerie){
+    if (this.submittedSerie) {
       this.idSearch = this.serieForm.value.idSerie;
       this.recargar(this.idSearch);
     }

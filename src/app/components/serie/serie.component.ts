@@ -53,7 +53,7 @@ export class SerieComponent implements OnInit {
       }
     });
     this.listReview = this.respuesta.listaReview;
-    this.resetHeader.filter_value="";
+    this.resetHeader.filter_value = "";
     this.resetHeader.resetSearch();
   }
 }

@@ -3,10 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { NavCrudComponent } from './components/nav-crud/nav-crud.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ListSerieComponent } from './components/list-serie/list-serie.component';
-import { ListRepartoComponent } from './components/list-reparto/list-reparto.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SerieComponent } from './components/serie/serie.component';
 import { BrokenImgDirective } from './directives/broken-img.directive';
@@ -45,9 +43,7 @@ import { MyinfoComponent } from './components/myinfo/myinfo.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    NavCrudComponent,
     ListSerieComponent,
-    ListRepartoComponent,
     SerieComponent,
     BrokenImgDirective,
     ModalVideoComponent,

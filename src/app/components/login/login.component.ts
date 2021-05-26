@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         });
   }
-  
+
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }

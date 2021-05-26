@@ -33,8 +33,9 @@
                     <div class="form-group col-md-6">
                         <label for="pass">Password</label>
                         <div class="input-group">
-                            <input [type]="fieldTextType ? 'text' : 'password'" formControlName="pass" class="form-control" placeholder="******"
-                            [ngClass]="{ 'is-invalid': submittedPass && p.pass.errors }" />
+                            <input [type]="fieldTextType ? 'text' : 'password'" formControlName="pass"
+                                class="form-control" placeholder="******"
+                                [ngClass]="{ 'is-invalid': submittedPass && p.pass.errors }" />
                             <span class="input-group-text bg-dark border-warning text-white">
                                 <i class="fa" [ngClass]="{
                                       'fa-eye-slash': !fieldTextType,
@@ -51,8 +52,9 @@
                     <div class="form-group col-md-6">
                         <label for="confirm">Confirm Password</label>
                         <div class="input-group">
-                            <input [type]="fieldConfirmType ? 'text' : 'password'" formControlName="confirm" class="form-control" placeholder="******"
-                            [ngClass]="{ 'is-invalid': submittedPass && p.confirm.errors }" />
+                            <input [type]="fieldConfirmType ? 'text' : 'password'" formControlName="confirm"
+                                class="form-control" placeholder="******"
+                                [ngClass]="{ 'is-invalid': submittedPass && p.confirm.errors }" />
                             <span class="input-group-text bg-dark border-warning text-white">
                                 <i class="fa" [ngClass]="{
                                       'fa-eye-slash': !fieldConfirmType,

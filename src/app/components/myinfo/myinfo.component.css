@@ -1,12 +1,12 @@
-main{
+main {
     margin-top: 95px;
 }
 
-.form-control{
+.form-control {
     border: 1px solid orange;
 }
 
-.form-control:focus{
+.form-control:focus {
     border-color: rgb(255, 165, 0);
     box-shadow: 0 0 0 0.25rem rgb(255 165 0 / 25%);
 }

@@ -65,7 +65,7 @@ export class TableSerieComponent implements OnInit {
   }
 
   //Generate BBDD
-  generateBBDD(){
+  generateBBDD() {
     var resp = this._swal.generate((confirm) => {
       if (confirm)
         this.restservice.generateBBDD()

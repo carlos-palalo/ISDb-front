@@ -30,6 +30,7 @@
     "jquery": "^3.6.0",
     "jwt-decode": "^3.1.2",
     "ng-bootstrap-select": "^0.5.0",
+    "ng-lazyload-image": "^9.1.0",
     "ngx-bootstrap": "^6.2.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^11.0.7",

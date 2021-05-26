@@ -13,7 +13,7 @@ export class ManagementComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    if (this.authenticationService.currentObjUser.role!="admin") {
+    if (this.authenticationService.currentObjUser.role != "admin") {
       console.log(this.authenticationService.currentUser);
       this.router.navigate(['/']);
     }

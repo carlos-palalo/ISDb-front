@@ -43,7 +43,7 @@ export class SwalService {
   public generate(callback: Function) {
     swalWithBootstrapButtons.fire({
       title: 'Do you want to generate 3 rows?',
-      text: "You won't be able to revert this!",
+      text: "This will take few minutes",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Yes, generate few rows!',

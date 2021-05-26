@@ -12,7 +12,6 @@
 .bg-black-1 {
     background: rgb(6, 6, 6);
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(2, 2, 2, 1) 100%);
-
     color: white;
 }
 
@@ -21,11 +20,11 @@
     color: white;
 }
 
-img{
+img {
     width: 100%;
 }
 
-footer section>a{
+footer section>a {
     width: 30px;
 }
 
@@ -50,6 +49,14 @@ body::-webkit-scrollbar-thumb {
 
 /****************************************************/
 
-body{
-    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important ;
+body {
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+.navbar-brand {
+    font-size: xx-large;
+    background: -webkit-linear-gradient(0deg, orange, orangered);
+    -webkit-background-clip: text;
+    font-weight: 700;
+    -webkit-text-fill-color: transparent;
 }

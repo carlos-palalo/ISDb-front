@@ -44,7 +44,7 @@ export class NavManagementComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  get isAdmin(){
+  get isAdmin() {
     return this.currentUser && this.currentUser.tipo == Role.admin;
   }
 }

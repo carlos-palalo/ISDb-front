@@ -59,8 +59,7 @@
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label for="nombre">Nombre</label>
-                            <input type="text" formControlName="nombre" class="form-control"
-                                placeholder="example: John"
+                            <input type="text" formControlName="nombre" class="form-control" placeholder="example: John"
                                 [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
                             <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
                                 <div *ngIf="f.nombre.errors.required">Nombre is required</div>
@@ -68,7 +67,8 @@
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="foto">Foto</label>
-                            <input type="text" formControlName="foto" class="form-control" placeholder="example: https://"
+                            <input type="text" formControlName="foto" class="form-control"
+                                placeholder="example: https://"
                                 [ngClass]="{ 'is-invalid': submitted && f.foto.errors }" />
                             <div *ngIf="submitted && f.foto.errors" class="invalid-feedback">
                                 <div *ngIf="f.foto.errors.required">Foto is required</div>

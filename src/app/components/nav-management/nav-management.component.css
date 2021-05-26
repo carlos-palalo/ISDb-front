@@ -1,23 +1,27 @@
-.nav-link{
+.nav-link {
     color: orange;
     padding: .5rem .8rem;
 }
-.nav-link.active{
+
+.nav-link.active {
     color: black;
     background-color: orange;
     border: 1px solid orange;
     font-weight: 600;
 }
-.nav-link:hover{
+
+.nav-link:hover {
     border: 1px solid orange;
 }
-.nav-tabs{
+
+.nav-tabs {
     border-bottom: 1px solid orange;
 }
 
-nav .btn{
+nav .btn {
     font-weight: bold;
 }
+
 main {
     min-height: 100%;
 }
