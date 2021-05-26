@@ -19,6 +19,7 @@ export class TableUsuarioComponent implements OnInit {
   ) { }
   data = [];
   userdata: any
+  fieldTextType: boolean;
 
   ngOnInit() {
     //Add form validations
@@ -145,7 +146,7 @@ export class TableUsuarioComponent implements OnInit {
       myFormData.append('username', this.editForm.value.username);
       myFormData.append('email', this.editForm.value.email);
       myFormData.append('tipo', this.editForm.value.tipo);
-
+      console.log(myFormData);
       this.crudservice.updateuser(myFormData, this.userID)
         .subscribe(
           response => {
@@ -211,5 +212,9 @@ export class TableUsuarioComponent implements OnInit {
         }, 500);
       });
     });
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }

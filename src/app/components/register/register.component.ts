@@ -13,6 +13,7 @@ import { SwalService } from 'src/app/services/swal/swal.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
+  fieldTextType: boolean;
   submitted = false;
   error = '';
 
@@ -64,6 +65,10 @@ export class RegisterComponent implements OnInit {
           this.loading = false;
         }
       });
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }
 

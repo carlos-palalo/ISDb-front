@@ -14,11 +14,7 @@ const swalWithBootstrapButtons = Swal.mixin({
   providedIn: 'root'
 })
 export class SwalService {
-  aux: any;
-
-  constructor() {
-
-  }
+  constructor() { }
 
   public success(msg: string) {
     Swal.fire({
@@ -44,9 +40,33 @@ export class SwalService {
     })
   }
 
-  public areyousure(msg: string, callback: Function) {
-    this.aux = "aaaa";
+  public generate(callback: Function) {
+    swalWithBootstrapButtons.fire({
+      title: 'Do you want to generate 3 rows?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, generate few rows!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return callback(true);
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Serie data is safe :)',
+          'error'
+        )
+        return callback(null);
+      }
+    })
+  }
 
+  public areyousure(msg: string, callback: Function) {
     swalWithBootstrapButtons.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",

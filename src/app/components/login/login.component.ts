@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  fieldTextType: boolean;
   error = '';
 
   constructor(
@@ -65,16 +66,9 @@ export class LoginComponent implements OnInit {
           this._swal.error();
           this.loading = false;
         });
-    /*.subscribe({
-      next: () => {
-        // get return url from route parameters or default to '/'
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigate([returnUrl]);
-      },
-      error: error => {
-        this.error = error;
-        this.loading = false;
-      }
-    });*/
+  }
+  
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 }

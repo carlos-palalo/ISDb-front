@@ -5,6 +5,7 @@ import { CrudReviewService } from 'src/app/services/crudreview/crud-review.servi
 import { CrudUsuarioService } from 'src/app/services/crudusuario/crud-usuario.service';
 import { CrudSerieService } from 'src/app/services/crudserie/crud-serie.service';
 import { DatePipe } from '@angular/common';
+import { RestService } from 'src/app/services/rest/rest.service';
 declare let $: any;
 
 @Component({
@@ -17,6 +18,7 @@ export class TableSerieComponent implements OnInit {
 
   constructor(
     private crudservice: CrudSerieService,
+    private restservice: RestService,
     private formBuilder: FormBuilder,
     private _swal: SwalService,
     private datePipe: DatePipe
@@ -64,7 +66,22 @@ export class TableSerieComponent implements OnInit {
 
   //Generate BBDD
   generateBBDD(){
-    
+    var resp = this._swal.generate((confirm) => {
+      if (confirm)
+        this.restservice.generateBBDD()
+          .subscribe(
+            response => {
+              console.log(response);
+              this.submitted = true;
+              this._swal.success("Generation finished Successfully!");
+              this.recargar();
+            },
+            error => {
+              console.log(error);
+              this._swal.error();
+              this.recargar();
+            });
+    });
   }
 
   //Add Form

@@ -27,6 +27,8 @@ export class MyinfoComponent implements OnInit {
   submittedInfo = false;
   submittedPass = false;
   user;
+  fieldTextType: boolean;
+  fieldConfirmType: boolean;
 
   ngOnInit() {
     //Add form validations
@@ -119,5 +121,13 @@ export class MyinfoComponent implements OnInit {
             this._swal.error();
           });;
     }
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
+
+  toggleFieldConfirmType() {
+    this.fieldConfirmType = !this.fieldConfirmType;
   }
 }

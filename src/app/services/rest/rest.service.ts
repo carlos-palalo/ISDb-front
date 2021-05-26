@@ -35,4 +35,8 @@ export class RestService {
     };
     return this.http.post(`${this.baseUrl}postreview`, json);
   }
+
+  public generateBBDD(){
+    return this.http.get(`${this.baseUrl}generatebbdd`);
+  }
 }
