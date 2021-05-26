@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class RestService {
   private baseUrl: string = `${environment.apiUrl}/General/`;
+  private adminUrl: string = `${environment.apiUrl}/Admin/`;
 
   constructor(
     private http: HttpClient,
@@ -37,6 +38,6 @@ export class RestService {
   }
 
   public generateBBDD(){
-    return this.http.get(`${this.baseUrl}generatebbdd`);
+    return this.http.get(`${this.adminUrl}generatebbdd`);
   }
 }
